@@ -1,0 +1,10 @@
+---
+- name: create nginx user
+  user: name={{ nginx_user }} state=present createhome=no shell=/sbin/nologin
+- name: start nginx service
+  shell: /etc/init.d/nginx start
+- name: start nginx service
+  shell: chkconfig --level 345 nginx on
+- name: delete nginx files
+  shell: rm -rf /tmp/nginx.tar.gz
+
